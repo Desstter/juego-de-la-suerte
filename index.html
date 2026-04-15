@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Selección de Candidatos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Juego de Selección de Candidatos</h1>
+            <p class="subtitle">95% Trabajo Duro + 5% Suerte = 100% Resultado</p>
+        </header>
+
+        <div class="controls">
+            <div class="input-group">
+                <label for="candidatos">Número de Candidatos (N):</label>
+                <input type="number" id="candidatos" min="1" max="10000000" value="10">
+                <small class="help-text">Sin límite superior. N > 200,000 usará modo streaming.</small>
+            </div>
+
+            <div class="input-group">
+                <label for="topK">Mostrar Top/Bottom K:</label>
+                <input type="number" id="topK" min="1" value="5">
+            </div>
+
+            <div class="input-group">
+                <label for="semilla">Semilla (opcional):</label>
+                <input type="number" id="semilla" placeholder="Dejar vacío para aleatorio">
+            </div>
+
+            <div class="input-group">
+                <label for="modo">Modo de Ejecución:</label>
+                <select id="modo">
+                    <option value="auto">Auto (recomendado)</option>
+                    <option value="exact">Exacto (más precisión)</option>
+                    <option value="stream">Streaming (menos memoria)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button id="iniciar" class="btn primary">🚀 Iniciar Simulación Avanzada</button>
+            <button id="mostrarTop" class="btn secondary">🏆 Mostrar Top K</button>
+            <button id="mostrarBottom" class="btn secondary">📉 Mostrar Bottom K</button>
+            <button id="repetir" class="btn tertiary">🔄 Repetir</button>
+            <button id="explicacion" class="btn info">📚 Explicación Matemática</button>
+            <button id="reporteCompleto" class="btn info">📊 Reporte Completo</button>
+        </div>
+
+        <div id="explicacion-matematica" class="explanation hidden">
+            <h3>📊 Explicación Matemática</h3>
+            <div class="formula">
+                <strong>Fórmula:</strong> <code>score_total = trabajo_duro × 0.95 + suerte × 0.05</code>
+            </div>
+            <ul>
+                <li><strong>Trabajo Duro (95%):</strong> Representa experiencia + habilidades. Domina el resultado final.</li>
+                <li><strong>Suerte (5%):</strong> Factor aleatorio que puede hacer pequeños ajustes al resultado.</li>
+                <li><strong>Varianza esperada:</strong> Con distribución uniforme, la suerte puede variar el resultado final en aproximadamente ±2.5 puntos máximo.</li>
+                <li><strong>Interpretación:</strong> Un candidato con trabajo_duro alto siempre superará a uno con trabajo_duro bajo, independientemente de la suerte.</li>
+            </ul>
+        </div>
+
+        <div class="results">
+            <div class="result-section full-width">
+                <h3>📋 Resultados (Tabla)</h3>
+                <div id="tabla-resultados" class="table-container"></div>
+            </div>
+        </div>
+
+        <div class="advanced-stats">
+            <div class="stat-section">
+                <h3>📊 Estadísticas Globales</h3>
+                <div id="estadisticas-globales" class="stats-display"></div>
+            </div>
+
+            <div class="stat-section">
+                <h3>🔬 Descomposición de Varianza</h3>
+                <div id="descomposicion-varianza" class="variance-analysis"></div>
+            </div>
+
+            <div class="stat-section">
+                <h3>⚖️ Análisis de Sensibilidad</h3>
+                <div id="analisis-sensibilidad" class="sensitivity-analysis"></div>
+            </div>
+        </div>
+
+        <div class="results">
+            <div class="result-section">
+                <h3>💾 Reporte Completo (JSON)</h3>
+                <pre id="json-resultados" class="json-output"></pre>
+            </div>
+        </div>
+
+        <div class="stats">
+            <h3>📈 Estadísticas</h3>
+            <div id="estadisticas" class="stats-container"></div>
+        </div>
+    </div>
+
+    <script src="advanced-game-engine.js"></script>
+    <script src="advanced-ui.js"></script>
+</body>
+</html>
